@@ -1,1 +1,13 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* 添加样式来支持深色模式的切换 */
+
+::part(theme-container) {
+    display: contents;
+    /* 确保这个容器不影响布局 */
+}
+
+::part(theme-container).dark {
+    color-scheme: dark;
+}

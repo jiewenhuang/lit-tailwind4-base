@@ -1,15 +1,53 @@
 <!doctype html>
-<html lang="en">
-  <head>
+<html lang="en" class="dark">
+
+<head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + Lit + TS</title>
     <script type="module" src="/src/main.ts"></script>
-  </head>
-  <body>
-    <my-element>
-      <h1>Vite + Lit</h1>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        /* 添加切换主题的按钮样式 */
+        
+        #theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 8px 16px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="theme-toggle">切换主题</button>
+    <my-element themeAttr="class">
+        <h1>Vite + Lit</h1>
     </my-element>
-  </body>
+
+    <script>
+        // 添加切换主题的功能
+        document.getElementById('theme-toggle').addEventListener('click', () => {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('class');
+
+            if (currentTheme === 'light') {
+                html.setAttribute('class', 'dark');
+            } else {
+                html.setAttribute('class', 'light');
+            }
+        });
+    </script>
+</body>
+
 </html>

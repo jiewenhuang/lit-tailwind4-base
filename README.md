@@ -27,8 +27,20 @@ bun run build
 
 ```typescript
 
-import { CustomLitElement } from './custom-lit-element.ts'
+import { TailwindLitElement } from './custom-lit-element.ts'
 ...
-export class MyElement extends CustomLitElement {}
+export class MyElement extends TailwindLitElement {
+  // 使用renderContent()来渲染内容，以适配暗色模式
+  renderContent(){}
+}
+
+```
+#### 暗色模式
+```html
+<my-element themeAttr="class">
+        <h1>Vite + Lit</h1>
+    </my-element>
+
+themeAttr为存放主题类名的属性名，默认为theme，例如class="dark"，则themeAttr="class";使用data-theme="dark"，则themeAttr="data-theme"
 
 ```

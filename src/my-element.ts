@@ -1,4 +1,4 @@
-import { CustomLitElement } from './custom-lit-element.ts'
+import { TailwindLitElement } from './custom-lit-element.ts'
 
 import { css, html } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
@@ -12,7 +12,7 @@ import viteLogo from '/vite.svg'
  * @csspart button - The button
  */
 @customElement('my-element')
-export class MyElement extends CustomLitElement {
+export class MyElement extends TailwindLitElement {
   /**
    * Copy for the read the docs hint.
    */
@@ -25,9 +25,9 @@ export class MyElement extends CustomLitElement {
   @property({ type: Number })
   count = 0
 
-  render() {
+  renderContent() {
     return html`
-      <div class="mx-auto flex h-screen flex-col items-center justify-center space-y-4">
+      <div class="mx-auto flex h-screen flex-col items-center justify-center space-y-4 bg-gray-100 dark:bg-gray-800">
         <div class="flex space-x-4">
           <a href="https://vite.dev" target="_blank">
             <img src=${viteLogo} class="logo" alt="Vite logo" />
@@ -36,11 +36,11 @@ export class MyElement extends CustomLitElement {
             <img src=${litLogo} class="logo lit" alt="Lit logo" />
           </a>
         </div>
-        <slot></slot>
-        <div class="card rounded-lg bg-blue-500 p-4 text-white shadow-lg">
+        <slot class="text-gray-600 dark:text-white"></slot>
+        <div class="card rounded-lg bg-blue-500 p-4 text-white shadow-lg dark:bg-blue-800">
           <button @click=${this._onClick} part="button">count is ${this.count}</button>
         </div>
-        <p class="read-the-docs">${this.docsHint}</p>
+        <p class="read-the-docs text-gray-700 dark:text-gray-300">${this.docsHint}</p>
       </div>
     `
   }
